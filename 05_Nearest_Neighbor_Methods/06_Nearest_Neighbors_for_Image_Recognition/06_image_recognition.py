@@ -59,7 +59,7 @@ top_k_xvals, top_k_indices = tf.nn.top_k(tf.negative(distance), k=k)
 prediction_indices = tf.gather(y_target_train, top_k_indices)
 # Predict the mode category
 count_of_predictions = tf.reduce_sum(prediction_indices, axis=1)
-prediction = tf.argmax(count_of_predictions, axis=1)
+prediction = tf.argmax(count_of_predictions)
 
 # Calculate how many loops over training data
 num_loops = int(np.ceil(len(x_vals_test)/batch_size))
@@ -92,3 +92,5 @@ for i in range(len(actuals)):
     frame = plt.gca()
     frame.axes.get_xaxis().set_visible(False)
     frame.axes.get_yaxis().set_visible(False)
+    
+plt.show()
